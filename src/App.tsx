@@ -7,6 +7,33 @@ import Article from "./components/Article";
 import { createContext, useState } from "react";
 import "./styles/index.css";
 
+
+/*
+
+Moikka Ambientian väki. 
+
+Tein tälläsen artikkeli etsintä sivun, tein sen antamienne ohjeiden mukaisesti.
+Käytin Reactin erilaisia toimintoja kuten;
+
+Siinä on muutamia bugeja kuten se, että jos menee sivuja eteenpäin niin jossain vaiheessa se API ei enään anna niitä artikkeleita. NewsApi on vähän kömpelö.
+
+---- Hookit ----
+  - createContext, useContext
+  - useState
+  - useRef
+  - useEffect
+----------------
+
+---- Kirjastot ----
+  - React Router
+  - Redux Toolkit
+  - Axios
+  - Chakra UI
+  - Vite 
+------------------- 
+*/
+
+
 export const ArticleContext = createContext<any>(null);
 
 function App() {
