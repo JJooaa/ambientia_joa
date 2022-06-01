@@ -15,7 +15,7 @@ const url = (input: string, pageNumber: number) => {
     "language=en&" +
     "pageSize=10&" +
     `page=${pageNumber.toString()}&` +
-    "apiKey=9d03da22715841ec922796b12b63157b"
+    `apiKey=${import.meta.env.VITE_REACT_API_KEY}`
   );
 };
 
