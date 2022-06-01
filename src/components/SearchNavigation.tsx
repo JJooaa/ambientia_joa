@@ -1,6 +1,6 @@
 import { Button, Input } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
-import { fetchArticles } from "../redux/articleSlice";
+import { fetchArticles, reset } from "../redux/articleSlice";
 import { useAppDispatch } from "../redux/store";
 
 interface Props {
@@ -15,6 +15,7 @@ const SearchNavigation: React.FC<Props> = ({ input, setInput }) => {
   // Search button fetch function, input cannot be empty
   const fetchByKeyword = () => {
     if (inputRef.current?.value.length !== 0) {
+      dispatch(reset());
       dispatch(fetchArticles(input));
     }
   };

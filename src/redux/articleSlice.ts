@@ -44,6 +44,9 @@ export const articles = createSlice({
     decrement: (state) => {
       state.pageNumber -= 1;
     },
+    reset: (state) => {
+      state.pageNumber = 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -61,5 +64,5 @@ export const articles = createSlice({
   },
 });
 
-export const { increment, decrement } = articles.actions;
+export const { increment, decrement, reset } = articles.actions;
 export default articles.reducer;
