@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ArticleContext } from "../App";
-import "./Article.css";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
 import Header from "./Header";
@@ -32,7 +31,9 @@ const Article = () => {
   return (
     <>
       <Header />
-      <Button onClick={() => navigate("/")}>Home</Button>
+      <div style={{ display: "flex", justifyContent: "center", padding: 20 }}>
+        <Button onClick={() => navigate("/")}>Go back</Button>
+      </div>
       <article className="article-detail">
         <h1>{currentArticle.title}</h1>
         <div>

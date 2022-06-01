@@ -3,12 +3,10 @@ import axios from "axios";
 
 interface State {
   status: "idle" | "loading" | "succeeded" | "failed";
-  value: { title: string; urlToImage: string }[];
+  value: { title: string; urlToImage: string }[] | any;
   pageNumber: number;
 }
 const url = (input: string, pageNumber: number) => {
-  // const { keyword, page } = data;
-  console.log(pageNumber)
   return (
     "https://newsapi.org/v2/everything?" +
     `q=${input}&` +
@@ -21,11 +19,10 @@ const url = (input: string, pageNumber: number) => {
   );
 };
 
-export const fetchArticles = createAsyncThunk(
+export const fetchArticles = createAsyncThunk<string, string, { state: any }>(
   "/articles/fetchArticles",
   async (input: string, { getState }) => {
     const { pageNumber } = getState().articles;
-
     const response = await axios.get(url(input, pageNumber));
     return response.data.articles;
   }
@@ -44,6 +41,9 @@ export const articles = createSlice({
     increment: (state) => {
       state.pageNumber += 1;
     },
+    decrement: (state) => {
+      state.pageNumber -= 1;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -61,5 +61,5 @@ export const articles = createSlice({
   },
 });
 
-export const { increment } = articles.actions;
+export const { increment, decrement } = articles.actions;
 export default articles.reducer;
